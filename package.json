@@ -1,0 +1,16 @@
+{
+  "name": "chai-backened",
+  "version": "1.0.0",
+  "description": "a backened at chai aur code channel - youtube",
+  "keywords": [
+    "javascript",
+    "Backened"
+  ],
+  "license": "ISC",
+  "author": "Dev Kumar Mahato",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
