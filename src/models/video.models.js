@@ -37,7 +37,7 @@ const videoSchema = new mongoose.Schema(
             required: true
         }
 
-    }, { timeStamps: true}
+    }, { timestamps: true}
 )
 
 videoSchema.plugin(mongooseAggregatePaginate)
