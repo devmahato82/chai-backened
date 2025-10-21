@@ -151,8 +151,8 @@ const logoutUser = asyncHandler(async (req,res) => {
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1 //this remove the field from document
             }
         },
         {
@@ -217,14 +217,14 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 const changeCurrentPassword = asyncHandler(async (req, res) => {
     const { oldPassword, newPassword} = req.body
 
-    if( oldPassword == newPassword ){
+    if( oldPassword === newPassword ){
         throw new ApiError(400, "New password must be different from old password")
     }
     
     const user = await User.findById(req.user?._id)
-    isPasswordCorrect(oldPassword)
+    const isPasswordValid = user.isPasswordCorrect(oldPassword)
 
-    if(!isPasswordCorrect){
+    if(!isPasswordValid){
         throw new ApiError(400, "Old password is incorrect")
     }
 
@@ -348,7 +348,7 @@ const getUserChannelProfile = asyncHandler (async (req, res) => {
             }
         },
         {
-            $add : {
+            $addFields : {
                 subscriberCount: {
                     $size: "$subscribers"
                 },
