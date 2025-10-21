@@ -214,7 +214,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 })
 
 
-const changePassword = asyncHandler(async (req, res) => {
+const changeCurrentPassword = asyncHandler(async (req, res) => {
     const { oldPassword, newPassword} = req.body
 
     if( oldPassword == newPassword ){
@@ -318,7 +318,7 @@ const updateUserCoverImage = asyncHandler (async (req, res) =>  {
 })
 
 
-const getUserChannelProperties = asyncHandler (async (req, res) => {
+const getUserChannelProfile = asyncHandler (async (req, res) => {
     const {username} = req.params
 
     if(!username?.trim()){
@@ -448,12 +448,12 @@ export {
     loginUser,
     logoutUser,
     refreshAccessToken,
-    changePassword,
+    changeCurrentPassword,
     getCurrentUser,
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
-    getUserChannelProperties,
+    getUserChannelProfile,
     getWatchHistory
 
 
